@@ -1,0 +1,21 @@
+﻿@model DonSharpLite.Tasks.ViewModels.EditCustomerViewModel
+
+@{
+    ViewBag.Title = "Manage Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "ManageCustomers"))
+{
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m=>m.Customer.Id)
+
+    <table class="cffree">
+        <tr>
+            <td>
+                @Html.LabelFor(m=>m.Customer.AccountNumber)
+            </td>
+        </tr>
+    </table>
+}

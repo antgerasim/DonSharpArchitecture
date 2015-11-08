@@ -38,6 +38,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="SharpLite.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f2f64e823dfaf078, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\SharpLite.Domain.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,22 +51,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\AuthorizationTests.cs" />
+    <Compile Include="Domain\Utilities\HasherTests.cs" />
     <Compile Include="NHibernateProvider\MappingIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Domain\" />
     <Folder Include="Tasks\" />
     <Folder Include="Web\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DonSharpLite.Domain\DonSharpLite.Domain.csproj">
+      <Project>{74801410-f690-490c-91ea-cd94e520a465}</Project>
+      <Name>DonSharpLite.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DonSharpLite.NHibernateProvider\DonSharpLite.NHibernateProvider.csproj">
       <Project>{4E471CAC-A108-49AE-A4D6-155DC35712C9}</Project>
       <Name>DonSharpLite.NHibernateProvider</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

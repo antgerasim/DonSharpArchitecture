@@ -1,0 +1,26 @@
+﻿@model IOrderedQueryable<DonSharpLite.Domain.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table>
+    <tr>
+        <th>Account Number</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.AccountNumber</td>
+            <td>@item.EmailAddress</td>
+            <td>@item.LastName</td>
+            <td>@item.LastName</td>
+        </tr>
+    }
+</table>

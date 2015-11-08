@@ -1,0 +1,30 @@
+﻿using DonSharpLite.Domain;
+using NUnit.Framework;
+
+namespace DonSharpLite.Tests.Domain
+{
+    [TestFixture]
+    public class AuthorizationTests
+    {
+        [Test]
+        public void CanAuthorizeStaffMemberWithSingleRole() {
+            var staffMember = new StaffMember {
+                Roles = RoleType.Administrator
+            };
+
+            Assert.That(staffMember.IsAuthorizedAs(RoleType.Administrator));
+            Assert.That(! staffMember.IsAuthorizedAs(RoleType.SupportStaff));
+        }
+
+        [Test]
+        public void CanAuthorizeStaffMemberWithMultipleRoles() {
+            var staffMember = new StaffMember {
+                Roles = RoleType.Manager | RoleType.SupportStaff
+            };
+
+            Assert.That(staffMember.IsAuthorizedAs(RoleType.Manager));
+            Assert.That(staffMember.IsAuthorizedAs(RoleType.SupportStaff));
+            Assert.That(! staffMember.IsAuthorizedAs(RoleType.Administrator));
+        }
+    }
+}
